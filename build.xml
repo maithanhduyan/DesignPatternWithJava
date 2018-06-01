@@ -12,6 +12,8 @@
 	<property name="classes.dir" value="${build.dir}/classes" />
 	<property name="dist.dir" value="dist" />
 	<property name="jar.dir" value="${build.dir}/jar" />
+	<property name="test.dir" value="test" />
+	<property name="report.dir" value="${test.dir}/report" />
 
 	<target name="init">
 		<!-- Create the time stamp -->
@@ -32,7 +34,7 @@
 		<mkdir dir="${dist.dir}/lib" />
 
 		<!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
-		<jar jarfile="${dist.dir}/lib/DesignPatternWithJava-${DSTAMP}.jar" basedir="${build}" />
+		<jar jarfile="${dist.dir}/lib/DesignPatternWithJava-${DSTAMP}.jar" basedir="${build.dir}" />
 	</target>
 
 	<target name="clean" description="clean up">
@@ -40,19 +42,21 @@
 		<delete dir="${build.dir}" />
 		<delete dir="${dist.dir}" />
 		<delete dir="${bin.dir}" />
+		<delete dir="${test.dir}" />
 	</target>
 
 	<target name="jar_factory_pattern" depends="compile">
-		<mkdir dir="${jar.dir}"/>
+		<mkdir dir="${jar.dir}" />
 		<jar destfile="${jar.dir}/FactoryPatternDemo.jar" basedir="${classes.dir}">
 			<manifest>
-				<attribute name="Main-Class" value="anmtd.factory_pattern.FactoryPatternDemo"/>
+				<attribute name="Main-Class" value="anmtd.factory_pattern.FactoryPatternDemo" />
 			</manifest>
 		</jar>
 	</target>
-	
+
 	<target name="run_factory_pattern" depends="jar_factory_pattern">
 		<echo>${jar.dir}/FactoryPatternDemo.jar</echo>
 		<java jar="${jar.dir}/FactoryPatternDemo.jar" fork="true" />
 	</target>
+	
 </project>
