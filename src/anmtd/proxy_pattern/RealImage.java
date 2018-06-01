@@ -2,7 +2,6 @@ package anmtd.proxy_pattern;
 
 public class RealImage implements Image {
 
-	@SuppressWarnings("unused")
 	private String fileName;
 
 	public RealImage(String fileName) {
