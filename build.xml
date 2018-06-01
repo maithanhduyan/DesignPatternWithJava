@@ -6,62 +6,37 @@
 	    simple example build file
 	  </description>
 	<!-- set global properties for this build -->
-<<<<<<< HEAD
-	<property name="src" location="src" />
-	<property name="build" location="build" />
-	<property name="dist" location="dist" />
-=======
 	<property name="src.dir" value="src" />
 	<property name="bin.dir" value="bin" />
 	<property name="build.dir" value="build" />
 	<property name="classes.dir" value="${build.dir}/classes" />
 	<property name="dist.dir" value="dist" />
 	<property name="jar.dir" value="${build.dir}/jar" />
->>>>>>> master
 
 	<target name="init">
 		<!-- Create the time stamp -->
 		<tstamp />
 		<!-- Create the build directory structure used by compile -->
-<<<<<<< HEAD
-		<mkdir dir="${build}" />
-=======
 		<mkdir dir="${classes.dir}" />
 		<mkdir dir="${bin.dir}" />
->>>>>>> master
 	</target>
 
 	<target name="compile" depends="init" description="compile the source">
 		<!-- Compile the Java code from ${src} into ${build} -->
-<<<<<<< HEAD
-		<javac srcdir="${src}" destdir="${build}" />
-=======
 		<javac srcdir="${src.dir}" destdir="${classes.dir}" />
 		<javac srcdir="${src.dir}" destdir="${bin.dir}" />
->>>>>>> master
 	</target>
 
 	<target name="dist" depends="compile" description="generate the distribution">
 		<!-- Create the distribution directory -->
-<<<<<<< HEAD
-		<mkdir dir="${dist}/lib" />
-
-		<!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
-		<jar jarfile="${dist}/lib/DesignPatternWithJava-${DSTAMP}.jar" basedir="${build}" />
-=======
 		<mkdir dir="${dist.dir}/lib" />
 
 		<!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
 		<jar jarfile="${dist.dir}/lib/DesignPatternWithJava-${DSTAMP}.jar" basedir="${build}" />
->>>>>>> master
 	</target>
 
 	<target name="clean" description="clean up">
 		<!-- Delete the ${build} and ${dist} directory trees -->
-<<<<<<< HEAD
-		<delete dir="${build}" />
-		<delete dir="${dist}" />
-=======
 		<delete dir="${build.dir}" />
 		<delete dir="${dist.dir}" />
 		<delete dir="${bin.dir}" />
@@ -79,6 +54,5 @@
 	<target name="run_factory_pattern" depends="jar_factory_pattern">
 		<echo>${jar.dir}/FactoryPatternDemo.jar</echo>
 		<java jar="${jar.dir}/FactoryPatternDemo.jar" fork="true" />
->>>>>>> master
 	</target>
 </project>
